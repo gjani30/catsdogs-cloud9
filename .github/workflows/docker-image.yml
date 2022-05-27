@@ -31,10 +31,10 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: my-first-ecr-repo
         IMAGE_TAG: v0.1
-    defaults:
-      run:
-        working-directory: myfunctionname
-          cd myfunctionname
+      run: |
+          sudo su
+          cd
+          cd myown/
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker run -d -i -p 81:80 --name myapp $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker ps
