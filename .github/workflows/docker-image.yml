@@ -35,7 +35,7 @@ jobs:
           cd /home/runner/work/catsdogs-cloud9/catsdogs-cloud9/cats/
           docker build -t my-first-ecr-repo .
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker run -d -i -p 3000:80 --name myapp $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker run -d -i -p 3000:30 --name myapp $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker ps
           curl localhost -vvv
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
