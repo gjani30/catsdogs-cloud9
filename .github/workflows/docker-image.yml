@@ -32,8 +32,8 @@ jobs:
         ECR_REPOSITORY: my-first-ecr-repo
         IMAGE_TAG: v0.1
       run: |
+          cd /home/runner/work/catsdogs-cloud9/catsdogs-cloud9/
           docker build -t my-first-ecr-repo .
-          cd cats/
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker run -d -i -p 81:80 --name myapp $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker ps
