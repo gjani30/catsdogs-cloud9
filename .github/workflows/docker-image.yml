@@ -1,4 +1,4 @@
-name: Docker ECR
+name: Deploy to ECR
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
     steps:
 
     - name: Build the Docker image
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
         
     - name: Login to Amazon ECR
       id: login-ecr
@@ -30,7 +30,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: my-first-ecr-repo
-        IMAGE_TAG: v1.1
+        IMAGE_TAG: v0.1
       run: |
 
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
