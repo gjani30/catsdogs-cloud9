@@ -29,7 +29,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: my-own-repo
-        IMAGE_TAG: catsv0.1
+        IMAGE_TAG: cats
         
         
       run: |
@@ -45,12 +45,13 @@ jobs:
       env: 
           ECR_REGISTRY: ${{steps.login-ecr.outputs.registry}}
           ECR_REPOSITORY: assignment1
-          IMAGE_TAG: dogsv0.1
+          IMAGE_TAG: dogs
           
       run: |
           cd dogs/
-          ls -ltra 
+          ls -ltra
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker run -d -p 8081:80 --name assignment1-dogs $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker run -d -p 8081:80 --name my-first-repo-dogs $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker ps
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG 
+          # Push the docker image to ECR repository
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG   
